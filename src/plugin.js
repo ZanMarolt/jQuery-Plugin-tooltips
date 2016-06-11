@@ -71,12 +71,27 @@
             
             var position = $(this.element).attr('position');
             
-            var messages = [1,2];
+            var messages = [];
             var message = [];
             
             var head = [];
             
             var finalAppendMsg = '';
+            
+            for(var i=1;i<100;i++){
+                
+                message[i] = $(this.element).attr('message'+i);
+                head[i] = $(this.element).attr('head'+i);
+                
+                if(message[i] === undefined && head[i] === undefined){
+                    
+                    console.log(message[i]+': '+messages.length)
+                    
+                }else{
+                    messages.push(1);
+                }
+                
+            }
             
             
             for(var i=1;i<messages.length+1;i++){
