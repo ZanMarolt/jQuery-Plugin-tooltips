@@ -4,10 +4,27 @@
     <meta charset="UTF-8">
     <title>jQuery Plugin</title>
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <style>
+        .popover-item li {
+            list-style: none;
+        }
+        .popover-top:after{
+            position: absolute;
+            content: '';
+            bottom: -6px;
+            width: 11px;
+            height: 6px;
+            background-image: url('arr-bot.png');
+        }
+        .head:after {
+            content: ': ';
+            
+        }
+    </style>
 
 </head>
 <body>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ultrices nulla ut urna cursus iaculis. Etiam eu justo vitae diam viverra pulvinar. Proin feugiat tempor turpis, at laoreet lorem blandit eget. Vestibulum vehicula mollis euismod. <span class="popover" position="left" message="some message">Proin non pellentesque lacus.</span> Praesent sagittis rutrum neque eu malesuada.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ultrices nulla ut urna cursus iaculis. <span class="popover" position="bottom" head1="Drustvo" message1="some message" head2="head2" message2="message2">Etiam eu justo vitae</span> diam viverra pulvinar. Proin feugiat tempor turpis, at laoreet lorem blandit eget. Vestibulum vehicula mollis euismod. <span class="popover" position="top" head1="Drustvo" message1="some message" head2="head2" message2="message2">Proin non pellentesque lacus.</span> Praesent sagittis rutrum neque eu malesuada.</p>
 <script src="src/plugin.js"></script>
 <script src="example.js"></script>
 </body>

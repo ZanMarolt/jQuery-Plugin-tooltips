@@ -62,30 +62,46 @@
             $(this.element).on('mouseout', this.mouseOut.bind(this))
         },
         mouseOver:function(){
-            console.log('mouse is over');
 
             var top = $(this.element).offset().top;
             var left = $(this.element).offset().left;
 
             var width = $(this.element).width();
             var height = $(this.element).height();
+            
+            var position = $(this.element).attr('position');
+            
+            var messages = [1,2];
+            var message = [];
+            
+            var head = [];
+            
+            var finalAppendMsg = '';
+            
+            
+            for(var i=1;i<messages.length+1;i++){
+                message[i] = $(this.element).attr('message'+i);
+                head[i] = $(this.element).attr('head'+i);
+                if(finalAppendMsg != 'undefined'){
+                    finalAppendMsg = finalAppendMsg+'<li><b class="head">'+head[i]+'</b>'+message[i]+'</li>'
+                }
+                
+            }
 
-            var message = $(this.element).attr('message');
+            
 
             if(message === undefined){
                 throw new Error ('Message in not provided.')
             }
 
-            var popover = $('<div>', {text:message});
-
-
-
+            var popover = $('<div>');
+            popover.append(finalAppendMsg);
+            $('body').append(popover);
 
             popover.css({
 
                 position:'absolute',
                 width: width,
-                height: height,
                 zIndex: 2,
                 backgroundColor: '#ffffff',
                 padding:5,
@@ -93,16 +109,37 @@
                 boxShadow:'0 0 4px #888'
 
             });
-            $('body').append(popover);
+            
 
             if(position === 'left'){
 
                 popover.css({
-                    left: left+width/2-$(popover).outerWidth()/2,
-                    top: top+height/2-$(popover).outerHeight()/2
+                    left: left-width/2-$(popover).outerWidth()/2+'px',
+                    top: top+height/2-$(popover).outerHeight()/2+'px'
                 });
 
-            }else{
+            }else if(position === 'top'){
+                
+                console.log($(popover).height());
+                
+                popover.css({
+                    left: left+width/2-$(popover).outerWidth()/2,
+                    top: top-$(popover).outerHeight()-6
+                });
+                
+                popover.addClass('popover-top');
+                
+            }else if(position === 'bottom'){
+                
+                popover.css({
+                    left: left+width/2-$(popover).outerWidth()/2,
+                    top: top+height+6
+                });
+                
+                popover.addClass('popover-bottom'); 
+                
+            }
+            else{
 
                 popover.css({
                     left: left+width/2-$(popover).outerWidth()/2,
@@ -110,9 +147,6 @@
                 });
 
             }
-
-
-            popover.hide().fadeIn();
 
             this.popover = popover;
 
