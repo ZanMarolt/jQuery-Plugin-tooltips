@@ -5,16 +5,38 @@
     <title>jQuery Plugin</title>
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <style>
+        .popover-item{
+            box-shadow: 4px 5px 27px rgba(2, 2, 2, 0.09);
+            border-radius: 2px;
+            border: 1px solid #dadbdd;
+            padding: 15px;
+            max-width: 400px;
+            transition: all 0.2s ease-out;
+        }
         .popover-item li {
             list-style: none;
         }
         .popover-top:after{
             position: absolute;
             content: '';
-            bottom: -6px;
-            width: 11px;
-            height: 6px;
-            background-image: url('arr-bot.png');
+            bottom: -9px;
+            width: 14px;
+            height: 9px;
+            background-image: url('bottom-arr.png');
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+        }
+        .popover-bottom:after{
+            position: absolute;
+            content: '';
+            top: -9px;
+            width: 14px;
+            height: 9px;
+            background-image: url('top-arr.png');
+            left: 0;
+            right: 0;
+            margin: 0 auto;
         }
         .head:after {
             content: ': ';

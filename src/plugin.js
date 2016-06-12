@@ -58,8 +58,8 @@
             });
 
 
-            $(this.element).on('mouseover', this.mouseOver.bind(this))
-            $(this.element).on('mouseout', this.mouseOut.bind(this))
+            $(this.element).on('mouseover', this.mouseOver.bind(this));
+            $(this.element).on('mouseout', this.mouseOut.bind(this));
         },
         mouseOver:function(){
 
@@ -84,16 +84,14 @@
                 head[i] = $(this.element).attr('head'+i);
                 
                 if(message[i] === undefined && head[i] === undefined){
-                    
-                    console.log(message[i]+': '+messages.length)
+
                     
                 }else{
                     messages.push(1);
                 }
                 
             }
-            
-            
+
             for(var i=1;i<messages.length+1;i++){
                 message[i] = $(this.element).attr('message'+i);
                 head[i] = $(this.element).attr('head'+i);
@@ -102,8 +100,6 @@
                 }
                 
             }
-
-            
 
             if(message === undefined){
                 throw new Error ('Message in not provided.')
@@ -116,30 +112,30 @@
             popover.css({
 
                 position:'absolute',
-                width: width,
                 zIndex: 2,
                 backgroundColor: '#ffffff',
-                padding:5,
-                borderRadius:3,
-                boxShadow:'0 0 4px #888'
+                opacity: 0
 
             });
-            
-
-            if(position === 'left'){
-
+            if(position === 'top'){
                 popover.css({
-                    left: left-width/2-$(popover).outerWidth()/2+'px',
-                    top: top+height/2-$(popover).outerHeight()/2+'px'
+                    marginTop: '-15px'
                 });
 
-            }else if(position === 'top'){
-                
-                console.log($(popover).height());
+            }else if(position === 'bottom'){
+
+                popover.css({
+                    marginTop: '15px'
+                });
+
+            }
+            popover.addClass('popover-item');
+
+            if(position === 'top'){
                 
                 popover.css({
                     left: left+width/2-$(popover).outerWidth()/2,
-                    top: top-$(popover).outerHeight()-6
+                    top: top-$(popover).innerHeight()-6
                 });
                 
                 popover.addClass('popover-top');
@@ -154,15 +150,11 @@
                 popover.addClass('popover-bottom'); 
                 
             }
-            else{
 
-                popover.css({
-                    left: left+width/2-$(popover).outerWidth()/2,
-                    top: top-$(popover).outerHeight()
-                });
-
-            }
-
+            popover.css({
+                opacity: 1,
+                margin: 0
+            });
             this.popover = popover;
 
         },
