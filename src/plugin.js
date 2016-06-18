@@ -52,8 +52,8 @@
             // you can add more functions like the one below and
             // call them like the example bellow
 
-            $(this.element).on('mouseover', this.mouseOver.bind(this));
-            $(this.element).on('mouseout', this.mouseOut.bind(this));
+            $(this.element).on('mouseenter', this.mouseOver.bind(this));
+            $(this.element).on('mouseleave', this.mouseOut.bind(this));
         },
         mouseOver:function(){
 
